@@ -1,5 +1,6 @@
 @charset "utf-8";
 @import "variables.scss";
+@import "menu.scss";
 @import "mixins.scss";
 @import "grid-layout.scss";
 @import "link.scss";
@@ -82,22 +83,6 @@ section {
     color: $color-main;
 }
 
-nav a {
-    display: block;
-    padding-left: 20px;
-    padding-right: 20px;
-    line-height: 42px;
-    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
-    font-size: 1.1em;
-}
-
-nav ul {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    list-style-type: none;
-    justify-content: end;
-}
 
 p {
     line-height: 1.4;
