@@ -7,8 +7,10 @@
     <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css" media="all">
+    <script src="scripts/mathop.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
     <script src="scripts/content.js" defer></script>
+
     <script src="scripts/script.js" defer></script>
 </head>
 
@@ -75,9 +77,9 @@
                     <label class="radio-block"><input type="radio" name="mathchoice" value="math-2"> 2.
                         Division</label>
                     <label class="radio-block"><input type="radio" name="mathchoice" value="math-3"> 3. Division
-                        with remainder</label>
+                        with remainder (Result format: 123r4)</label>
                     <label class="radio-block"><input type="radio" name="mathchoice" value="math-4"> 4. Division
-                        rounded</label>
+                        rounded (Rounded to 2 decimal places)</label>
                     <label class="radio-block"><input type="radio" name="mathchoice" value="math-5"> 5.
                         Addition</label>
                     <label class="radio-block"><input type="radio" name="mathchoice" value="math-6">
@@ -87,7 +89,8 @@
 
                     <hr>
                     <p><span id="mathoperation"></span><input type="text" id="input-result" name="input-result"><button
-                            type="button" id="ok-btn">OK</span></p>
+                            type="button" id="ok-btn">OK</button></p>
+                    <p><span id="result"> </span><br><span id="result-boolean"></span></p>
                 </section>
 
                 <section id="data-2">
