@@ -53,9 +53,9 @@ function randNum() {
 }
 
 function verifyUserInput() {
-    const mathCalculation = new Mathop(n1, n2, $inputResult.val(), op);
-    // console.log(mathCalculation.mathOperation().result, mathCalculation.mathOperation().resultBoolean);
-    $result.text(mathCalculation.mathOperation().result);
+    const mathCalculation = new MathCalc(n1, n2, $inputResult.val(), op);
+    // $result.text(mathCalculation.mathOperation().result);
+    $result.text(`${n1} ${strOp} ${n2} = ${mathCalculation.mathOperation().result}`);
     $resultBoolean.text(mathCalculation.mathOperation().resultBoolean);
     createMath();
 

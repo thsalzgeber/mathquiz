@@ -1,4 +1,4 @@
-class Mathop {
+class MathCalc {
     constructor(number1, number2, input, operation) {
         this.number1 = number1;
         this.number2 = number2;
