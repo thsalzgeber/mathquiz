@@ -293,11 +293,28 @@ section {
 
 .result {
   padding: 0.75em;
-  border-style: ridge;
   border-radius: 10px;
   margin: 1em;
   background-color: #c42c38;
   color: #fbfcfd;
+}
+
+.input-error {
+  color: white;
+  padding: 10px;
+  border-style: ridge;
+  border-radius: 10px;
+  background-color: #c42c38;
+}
+
+.ok-graphic {
+  margin-right: 10px;
+  content: url(../icons/ok-32.png);
+}
+
+.x-graphic {
+  margin-right: 10px;
+  content: url(../icons/x-32.png);
 }
 
 .radio-block {

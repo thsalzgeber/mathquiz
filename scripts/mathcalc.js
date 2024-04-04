@@ -24,7 +24,6 @@ class MathCalc {
                 console.log("this is the end");
         }
     }
-
 }
 
 function calcMultiplication(n1, n2, input) {

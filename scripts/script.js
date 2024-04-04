@@ -6,9 +6,12 @@ const sectionMathQuiz = document.getElementById('statistic').innerHTML = "Statis
 const $mathChoice = $('input[name="mathchoice"]');
 const $mathOperation = $('#mathoperation');
 const $inputResult = $('#input-result');
+const $inputError = $('#input-error');
 const $okButton = $('#ok-btn');
 const $result = $('#result');
 const $resultBoolean = $('#result-boolean');
+
+let formError = false;
 
 let n1 = 0;
 let n2 = 0;
@@ -18,18 +21,29 @@ init();
 
 function init() {
     createMath();
+    clearFormMessages();
 
 }
 
 $okButton.click(function () {
-    verifyUserInput();
-    $inputResult.val("");
-    $inputResult.focus();
+    if (formError) {
+        clearFormMessages();
+        removeErrorClass();
 
+    }
+    $resultBoolean.removeClass('ok-graphic x-graphic');
+    formError = false;
+    verifyUserInput();
+    clearErrorMessage();
 });
 
 $mathChoice.click(function () {
     op = strOp = mathSelection();
+    $resultBoolean.removeClass('ok-graphic x-graphic');
+    $result.text("");
+    clearFormMessages();
+    clearErrorMessage();
+    removeErrorClass();
     createMath();
 });
 
@@ -53,12 +67,19 @@ function randNum() {
 }
 
 function verifyUserInput() {
+    let resultOk = false;
     const mathCalculation = new MathCalc(n1, n2, $inputResult.val(), op);
-    // $result.text(mathCalculation.mathOperation().result);
+    checkInput($inputResult.val());
     $result.text(`${n1} ${strOp} ${n2} = ${mathCalculation.mathOperation().result}`);
-    $resultBoolean.text(mathCalculation.mathOperation().resultBoolean);
-    createMath();
+    resultOk = mathCalculation.mathOperation().resultBoolean;
 
+    if (resultOk) {
+        $resultBoolean.addClass('ok-graphic');
+    } else {
+        $resultBoolean.addClass('x-graphic');
+    }
+
+    createMath();
 }
 
 function mathSelection() {
@@ -73,6 +94,34 @@ function mathSelection() {
     }
 }
 
-function checInput(userInput) {
-    const numbersOnly = /[0-9.]+/;
+function checkInput(userInput) {
+    const regexInput = /^\d+r?\d*$/;
+    const regexObject = RegExp(regexInput);
+    if (userInput.trim().length === 0) {
+        $inputError.text(`You cannot leave the field empty`);
+        formError = true;
+    }
+
+    if (!formError) {
+        if (!regexObject.test(userInput)) {
+            $inputError.text(`Wrong input`);
+            $inputError.addClass('input-error');
+            clearErrorMessage()
+            formError = true;
+        }
+    }
+}
+
+function clearFormMessages() {
+    $inputError.text("");
+    $inputResult.focus();
+}
+
+function clearErrorMessage() {
+    $inputResult.val("");
+    $inputResult.focus();
+}
+
+function removeErrorClass() {
+    $inputError.removeClass('input-error');
 }
