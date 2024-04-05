@@ -182,6 +182,35 @@ footer {
     text-align: left;
   }
 }
+.popup {
+  position: relative;
+  display: inline-block;
+}
+
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #c42c38;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 8px 8px 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  /* left: 50%; */
+  /* margin-left: -80px; */
+}
+
+.popup .show {
+  visibility: visible;
+}
+
+.tooltip {
+  margin-left: 20px;
+  content: url("../icons/question-mark-14x24.png");
+}
+
 a:link,
 a:hover,
 a:focus,
@@ -309,12 +338,12 @@ section {
 
 .ok-graphic {
   margin-right: 10px;
-  content: url(../icons/ok-32.png);
+  content: url("../icons/ok-32.png");
 }
 
 .x-graphic {
   margin-right: 10px;
-  content: url(../icons/x-32.png);
+  content: url("../icons/x-32.png");
 }
 
 .radio-block {

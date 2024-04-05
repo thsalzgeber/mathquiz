@@ -8,35 +8,39 @@ class MathCalc {
 
     mathOperation() {
         switch (this.operation) {
-            case "*":
+            case 1:
                 return calcMultiplication(this.number1, this.number2, this.input);
-            case "/":
+            case 2:
                 return calcDivision(this.number1, this.number2, this.input);
-            case "%":
+            case 3:
                 return calcDivisionRemainer(this.number1, this.number2, this.input);
-            case "/r":
+            case 4:
                 return calcDivisionRounded(this.number1, this.number2, this.input);
-            case "+":
+            case 5:
                 return calcAddition(this.number1, this.number2, this.input);
-            case "-":
+            case 6:
                 return calcSubstraction(this.number1, this.number2, this.input);
             default:
-                console.log("this is the end");
+                console.log("Math Operation not found");
         }
     }
 }
 
 function calcMultiplication(n1, n2, input) {
+    const calc = n1 * n2;
     return {
-        result: n1 * n2,
-        resultBoolean: +input === n1 * n2 ? true : false,
+        result: calc,
+        resultText: `${n1} * ${n2} = ${calc}`,
+        resultBoolean: +input === calc ? true : false,
     }
 }
 
 function calcDivision(n1, n2, input) {
+    const calc = n1 / n2;
     return {
-        result: n1 / n2,
-        resultBoolean: +input === n1 / n2 ? true : false,
+        result: calc,
+        resultText: `${n1} / ${n2} = ${calc}`,
+        resultBoolean: +input === calc ? true : false,
     }
 }
 
@@ -44,28 +48,35 @@ function calcDivisionRemainer(n1, n2, input) {
     const remainerResult = (Math.trunc(n1 / n2)) + "r" + (n1 % n2);
     return {
         result: remainerResult,
+        resultText: `${n1} / ${n2} = ${remainerResult}`,
         resultBoolean: input === remainerResult ? true : false,
     }
 }
 
 function calcDivisionRounded(n1, n2, input) {
+    const calc = parseFloat((n1 / n2).toFixed(2));
     return {
-        result: parseFloat((n1 / n2).toFixed(2)),
-        resultBoolean: +input === parseFloat((n1 / n2).toFixed(2)) ? true : false,
+        result: calc,
+        resultText: `${n1} / ${n2} = ${calc}`,
+        resultBoolean: +input === calc ? true : false,
     }
 }
 
 function calcAddition(n1, n2, input) {
+    const calc = n1 + n2;
     return {
-        result: n1 + n2,
-        resultBoolean: +input === n1 + n2 ? true : false,
+        result: calc,
+        resultText: `${n1} + ${n2} = ${calc}`,
+        resultBoolean: +input === calc ? true : false,
     }
 }
 
 function calcSubstraction(n1, n2, input) {
+    const calc = n1 - n2;
     return {
-        result: n1 - n2,
-        resultBoolean: +input === (n1 - n2) ? true : false,
+        result: calc,
+        resultText: `${n1} / ${n2} = ${calc}`,
+        resultBoolean: +input === calc ? true : false,
     }
 }
 
