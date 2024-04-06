@@ -164,7 +164,7 @@ footer {
   }
   main #data {
     grid-template-columns: 1fr;
-    grid-template-areas: "data-1" "data-2";
+    grid-template-areas: "data-1" "data-2" "data-3";
   }
   #footer-info {
     grid-template-columns: 1fr;

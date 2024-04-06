@@ -30,7 +30,7 @@ function calcMultiplication(n1, n2, input) {
     const calc = n1 * n2;
     return {
         result: calc,
-        resultText: `${n1} * ${n2} = ${calc}`,
+        resultText: `${n1} x ${n2} = ${calc}`,
         resultBoolean: +input === calc ? true : false,
     }
 }
@@ -54,7 +54,7 @@ function calcDivisionRemainer(n1, n2, input) {
 }
 
 function calcDivisionRounded(n1, n2, input) {
-    const calc = parseFloat((n1 / n2).toFixed(2));
+    const calc = roundNumber((n1 / n2), 2);
     return {
         result: calc,
         resultText: `${n1} / ${n2} = ${calc}`,
@@ -80,4 +80,6 @@ function calcSubstraction(n1, n2, input) {
     }
 }
 
-
+function roundNumber(number, decimal) {
+    return parseFloat(Math.round(number * Math.pow(10, decimal)) / Math.pow(10, decimal)).toFixed(decimal);
+}

@@ -31,7 +31,8 @@ let formError = false;
 
 let n1 = 0;
 let n2 = 0;
-let op = strOp = "*";
+let op = "*";
+let strOp = "x";
 let mathChoice = 1;
 
 //Accordeon
@@ -49,8 +50,11 @@ function init() {
         q.text(quizText[i]);
         i++;
     }
+    n1 = getRandomInt(10, 100);
+    n2 = getRandomInt(2, 100);
     createMath();
     clearFormMessages();
+
 }
 
 $inputResult.on("keydown", function (e) {
@@ -83,24 +87,37 @@ function selectOperation() {
 
     switch (mathChoice) {
         case 1:
-            op = strOp = "*";
+            op = "*";
+            strOp = "x";
+            n1 = getRandomInt(10, 100);
+            n2 = getRandomInt(2, 100);
             break;
         case 2:
-            op = strOp = "/";
+            op = strOp = "/"
+            n1 = getRandomInt(10, 100);
+            n2 = getRandomInt(2, 10);
             break;
         case 3:
-            strOp = "/";
             op = "/%";
+            strOp = "/";
+            n1 = getRandomInt(10, 1000);
+            n2 = getRandomInt(2, 10);
             break;
         case 4:
             strOp = "/";
             op = "/r";
+            n1 = getRandomInt(10, 1000);
+            n2 = getRandomInt(2, 10);
             break;
         case 5:
-            op = strOp = "+";
+            strOp = "+";
+            n1 = getRandomInt(10, 100000);
+            n2 = getRandomInt(2, 100000);
             break;
         case 6:
-            op = strOp = "-";
+            strOp = "-";
+            n1 = getRandomInt(10, 1000);
+            n2 = getRandomInt(2, 1000);
             break;
         default:
             console.log("no operator chosen");
@@ -120,8 +137,6 @@ $mathChoice.click(function () {
 });
 
 function createMath() {
-    n1 = randNum();
-    n2 = randNum();
 
     if (n1 < n2) [n1, n2] = [n2, n1];
 
@@ -129,13 +144,13 @@ function createMath() {
     n1 = op === "/" ? (n1 * n2) : n1;
 
     $quizNumber.html(`<strong>${quizText[mathChoice - 1]}:</strong> `);
-
     $mathOperation.html(`${n1} ${strOp} ${n2} = `);
 }
 
-function randNum() {
-    // return Math.floor(Math.random() * 99) + 2;
-    return Math.floor(Math.random() * 9) + 2;
+function getRandomInt(min, max) {
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
 }
 
 function verifyUserInput() {
@@ -148,12 +163,12 @@ function verifyUserInput() {
         $resultBoolean.addClass('ok-graphic');
         $result.text(`${mathCalculation.mathOperation().resultText}`);
         resultArray.push(`${n1} ${strOp} ${n2} = ${$inputResult.val()}`);
-        player.playQuizz(resultOk);
+        player.playQuiz(resultOk);
     } else {
         $resultBoolean.addClass('x-graphic');
         $result.html(`<strong>${mathCalculation.mathOperation().resultText}</strong`)
         resultArray.push(`<span style="color:red;font-weight:bold">${n1} ${strOp} ${n2} = ${$inputResult.val()} <span style="color:black;font-weight:normal">(${mathCalculation.mathOperation().resultText})`);
-        player.playQuizz(resultOk);
+        player.playQuiz(resultOk);
     }
 
     $displayStatistic.html(player.displayStatistics());

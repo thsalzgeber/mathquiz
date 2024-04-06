@@ -1,29 +1,29 @@
 class Player {
     constructor(firstName) {
         this.firstName = firstName;
-        this.quizzPlayed = 0;
+        this.quizPlayed = 0;
         this.right = 0;
         this.wrong = 0;
         this.precentage = 0;
     }
 
-    playQuizz(result) {
-        this.quizzPlayed++;
-        if (result === true) {
+    playQuiz(result) {
+        this.quizPlayed++;
+        if (result) {
             this.right++;
-        } else if (result === false) {
+        } else if (!result) {
             this.wrong++;
         }
     }
 
     displayStatistics() {
-        return `<strong>${this.firstName}</strong> ${this.firstName === 'You' ? 'have' : 'has'} participated in <strong>${this.quizzPlayed} ${this.quizzPlayed === 1 ? 'quiz' : 'quizzes'}</strong>,
+        return `<strong>${this.firstName}</strong> ${this.firstName === 'You' ? 'have' : 'has'} participated in <strong>${this.quizPlayed} ${this.quizPlayed === 1 ? 'quiz' : 'quizzes'}</strong>,
         achieving a correct result <strong>${this.right} ${this.right === 1 ? 'time' : 'times'}</strong> an incorrect result <strong>${this.wrong} ${this.wrong === 1 ? 'time' : 'times'}</strong>.`;
     }
 
     displayMark() {
         const markText = 'Your Mark: ';
-        this.precentage = (this.right * 100) / this.quizzPlayed;
+        this.precentage = (this.right * 100) / this.quizPlayed;
 
         switch (true) {
             case this.precentage >= 86:
