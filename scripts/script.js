@@ -1,20 +1,31 @@
 const sectionHeader = document.getElementById('section-header').innerHTML = "Have Fun with Math";
 
 const sectionHangman = document.getElementById('math-quiz').innerHTML = "Choose a Math Quiz: ";
-const sectionMathQuiz = document.getElementById('statistic').innerHTML = "Statistic";
+const textStatistic = document.getElementById('statistic').innerHTML = "Statistic";
+const textMark = document.getElementById('mark').innerHTML = "Mark";
+// const textResults = document.getElementById('results').innerHTML = "Results";
+
+const $quizNumbers = [$("label[for='math-1']"), $("label[for='math-2']"), $("label[for='math-3']"), $("label[for='math-4']"), $("label[for='math-5']"), $("label[for='math-6']"), $("label[for='math-0']")];
+const quizText = ["Multiplication", "Division", "Division with remainder (Result format: 123r4)", "Division rounded (Rounded to 2 decimal places)", "Addition", "Subtraction", "Random operation from Quiz 1 to 6"];
 
 const toggleToolTip = document.getElementById("toggleToolTip");
 const popup = document.getElementById("popupvalue");
 
 const $mathChoice = $('input[name="mathchoice"]');
 const $mathOperation = $('#mathoperation');
+const $quizNumber = $('#quiznumber');
 const $inputResult = $('#input-result');
 const $inputError = $('#input-error');
 const $okButton = $('#ok-btn');
 const $result = $('#result');
 const $resultBoolean = $('#result-boolean');
+const $displayStatistic = $('#statistic-text');
+const $displayMark = $('#mark-text');
+const $displayResults = $('#all-results');
+const resultArray = [];
 
 let mathCalculation = new MathCalc();
+let player = new Player("You");
 
 let formError = false;
 
@@ -23,10 +34,21 @@ let n2 = 0;
 let op = strOp = "*";
 let mathChoice = 1;
 
+//Accordeon
+const $accordion = $("#accordion");
+$accordion.accordion();
+$accordion.accordion({ heightStyle: "content" });
+$accordion.accordion({ collapsible: true });
+$accordion.accordion("option", "active", false);
+
 init();
 
 function init() {
-    // selectOperation();
+    let i = 0;
+    for (const q of $quizNumbers) {
+        q.text(quizText[i]);
+        i++;
+    }
     createMath();
     clearFormMessages();
 }
@@ -55,7 +77,7 @@ function continueQuiz() {
 function selectOperation() {
     mathChoice = mathSelection();
 
-    if (mathChoice === 0) {
+    if (mathChoice === 7) {
         mathChoice = Math.floor(Math.random() * 6) + 1;
     }
 
@@ -106,7 +128,9 @@ function createMath() {
     n1 = op === "-" ? (n1 + n2) : n1;
     n1 = op === "/" ? (n1 * n2) : n1;
 
-    $mathOperation.html(`<strong>Quiz #${mathChoice}:</strong> ${n1} ${strOp} ${n2} = `);
+    $quizNumber.html(`<strong>${quizText[mathChoice - 1]}:</strong> `);
+
+    $mathOperation.html(`${n1} ${strOp} ${n2} = `);
 }
 
 function randNum() {
@@ -116,11 +140,31 @@ function randNum() {
 
 function verifyUserInput() {
     mathCalculation = new MathCalc(n1, n2, $inputResult.val(), mathChoice);
+
     checkInput($inputResult.val());
 
     const resultOk = mathCalculation.mathOperation().resultBoolean;
-    resultOk ? $resultBoolean.addClass('ok-graphic') : $resultBoolean.addClass('x-graphic');
-    !resultOk ? $result.html(`<strong>${mathCalculation.mathOperation().resultText}</strong`) : $result.text(`${mathCalculation.mathOperation().resultText}`);
+    if (resultOk) {
+        $resultBoolean.addClass('ok-graphic');
+        $result.text(`${mathCalculation.mathOperation().resultText}`);
+        resultArray.push(`${n1} ${strOp} ${n2} = ${$inputResult.val()}`);
+        player.playQuizz(resultOk);
+    } else {
+        $resultBoolean.addClass('x-graphic');
+        $result.html(`<strong>${mathCalculation.mathOperation().resultText}</strong`)
+        resultArray.push(`<span style="color:red;font-weight:bold">${n1} ${strOp} ${n2} = ${$inputResult.val()} <span style="color:black;font-weight:normal">(${mathCalculation.mathOperation().resultText})`);
+        player.playQuizz(resultOk);
+    }
+
+    $displayStatistic.html(player.displayStatistics());
+    $displayMark.html(player.displayMark());
+
+    $displayResults.text('');
+    let i = 1
+    for (const r of resultArray) {
+        $displayResults.append(`${i}) ${r} <br>`);
+        i++;
+    }
 }
 
 function mathSelection() {
@@ -131,7 +175,7 @@ function mathSelection() {
         if (radioButton.checked) if (radioButton.value === 'math-4') return 4;
         if (radioButton.checked) if (radioButton.value === 'math-5') return 5;
         if (radioButton.checked) if (radioButton.value === 'math-6') return 6;
-        if (radioButton.checked) if (radioButton.value === 'math-0') return 0;
+        if (radioButton.checked) if (radioButton.value === 'math-0') return 7;
     }
 }
 
@@ -146,7 +190,7 @@ function checkInput(userInput) {
 
     if (!formError) {
         if (!regexObject.test(userInput)) {
-            $inputError.html(`Please use this input format: <strong>123</strong> or <strong>123.1</strong> for the division with decimal or <strong>123r1</strong> for the division with remainer.`);
+            $inputError.html(`Use this input format: <strong>123</strong> or <strong>123.1</strong> for the division with decimal or <strong>123r1</strong> for the division with remainer.`);
             $inputError.addClass('input-error');
             clearErrorMessage()
             formError = true;

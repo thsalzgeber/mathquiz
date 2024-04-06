@@ -8,7 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css" media="all">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" defer></script>
     <script src="scripts/content.js" defer></script>
+    <script src="scripts/player.js" defer></script>
     <script src="scripts/mathcalc.js" defer></script>
     <script src="scripts/script.js" defer></script>
 </head>
@@ -71,28 +73,37 @@
                 <section id="data-1">
                     <h3 id="math-quiz"></h3>
                     <p id="settings-text"></p>
-                    <label class="radio-block"><input type="radio" name="mathchoice" value="math-1" checked>
-                        1. Multiplication</label>
-                    <label class="radio-block"><input type="radio" name="mathchoice" value="math-2"> 2.
-                        Division</label>
-                    <label class="radio-block"><input type="radio" name="mathchoice" value="math-3"> 3. Division
-                        with remainder (Result format: 123r4)</label>
-                    <label class="radio-block"><input type="radio" name="mathchoice" value="math-4"> 4. Division
-                        rounded (Rounded to 2 decimal places)</label>
-                    <label class="radio-block"><input type="radio" name="mathchoice" value="math-5"> 5.
-                        Addition</label>
-                    <label class="radio-block"><input type="radio" name="mathchoice" value="math-6">
-                        6. Subtraction</label>
-                    <label class="radio-block"><input type="radio" name="mathchoice" value="math-0"> 0. Random operation
-                        from Quiz 1 to 6</label>
+                    <form>
+                        <input type="radio" name="mathchoice" value="math-1" checked>
+                        <label for="math-1" class="radio-block"></label><br>
 
+                        <input type="radio" name="mathchoice" value="math-2">
+                        <label for="math-2" class="radio-block"></label><br>
+
+                        <input type="radio" name="mathchoice" value="math-3">
+                        <label for="math-3" class="radio-block"></label><br>
+
+                        <input type="radio" name="mathchoice" value="math-4">
+                        <label for="math-4" class="radio-block"></label><br>
+
+                        <input type="radio" name="mathchoice" value="math-5">
+                        <label for="math-5" class="radio-block"></label><br>
+
+                        <input type="radio" name="mathchoice" value="math-6">
+                        <label for="math-6" class="radio-block"></label><br>
+
+                        <input type="radio" name="mathchoice" value="math-0">
+                        <label for="math-0" class="radio-block"></label>
+                    </form>
                     <hr>
+                    <p id="quiznumber"></p>
                     <p><span id="mathoperation"></span>
                         <input type="text" id="input-result" name="input-result">
                         <button type="button" id="ok-btn">OK</button>
+
                         <i id="toggleToolTip" class="tooltip"></i>
                         <span class="popup">
-                            <span class="popuptext" id="popupvalue">Please use this input format:
+                            <span class="popuptext" id="popupvalue">Use this input format:
                                 <strong>123</strong> or <strong>123.1</strong> for the division with decimal or
                                 <strong>123r1</strong> for the division with remainer.</span>
                         </span>
@@ -103,7 +114,20 @@
 
                 <section id="data-2">
                     <h3 id="statistic"></h3>
-                    <p>you did</p>
+                    <p id="statistic-text"></p>
+                    <hr>
+                    <h3 id="mark"></h3>
+                    <p id="mark-text"></p>
+
+                </section>
+
+                <section id="data-3">
+                    <!-- <div id="accordion"> -->
+                    <h3 class="accordion-header">Results</h3>
+                    <!-- <h3 id="results"></h3> -->
+                    <p>False results are marked in red. The correct result is in parentheses.</p>
+                    <p id="all-results"></p>
+                    <!-- </div> -->
                 </section>
 
             </div>

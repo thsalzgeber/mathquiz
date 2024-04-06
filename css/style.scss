@@ -103,8 +103,16 @@ section {
 }
 
 .radio-block {
-    margin-left: 20px;
-    display: block;
+    padding-left: 10px;
+
+}
+
+.wrong-result {
+    color: red;
+}
+
+input[type="radio"] {
+    margin-bottom: 10px;
 }
 
 p {

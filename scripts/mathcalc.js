@@ -75,7 +75,7 @@ function calcSubstraction(n1, n2, input) {
     const calc = n1 - n2;
     return {
         result: calc,
-        resultText: `${n1} / ${n2} = ${calc}`,
+        resultText: `${n1} - ${n2} = ${calc}`,
         resultBoolean: +input === calc ? true : false,
     }
 }
