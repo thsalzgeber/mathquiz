@@ -105,13 +105,44 @@ section {
 .radio-block {
     padding-left: 10px;
 
+    &:hover {
+        cursor: pointer;
+    }
 }
+
+input[type=text] {
+    background-color: $color-nav;
+    border: none;
+    margin-left: 1em;
+    width: 5em;
+    height: 2em;
+    transition: 0.5s;
+    outline: none;
+
+    &:focus {
+        border-bottom: 1px solid $color-content-red;
+    }
+}
+
+button {
+    margin-left: 1em;
+    width: 5em;
+    height: 2em;
+    border: 1px solid $color-button-border;
+
+    &:hover {
+        background-color: $color-button-hoverbackground;
+        border-bottom: 1px solid $color-content-red;
+    }
+}
+
+
 
 .wrong-result {
-    color: red;
+    color: $color-content-red;
 }
 
-input[type="radio"] {
+input[type=radio] {
     margin-bottom: 10px;
 }
 

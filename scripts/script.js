@@ -5,7 +5,7 @@ const textStatistic = document.getElementById('statistic').innerHTML = "Statisti
 const textMark = document.getElementById('mark').innerHTML = "Mark";
 // const textResults = document.getElementById('results').innerHTML = "Results";
 
-const $quizNumbers = [$("label[for='math-1']"), $("label[for='math-2']"), $("label[for='math-3']"), $("label[for='math-4']"), $("label[for='math-5']"), $("label[for='math-6']"), $("label[for='math-0']")];
+const $quizNumbers = [$("label[for='math-1']"), $("label[for='math-2']"), $("label[for='math-3']"), $("label[for='math-4']"), $("label[for='math-5']"), $("label[for='math-6']"), $("label[for='math-7']")];
 const quizText = ["Multiplication", "Division", "Division with remainder (Result format: 123r4)", "Division rounded (Rounded to 2 decimal places)", "Addition", "Subtraction", "Random operation from Quiz 1 to 6"];
 
 const toggleToolTip = document.getElementById("toggleToolTip");
@@ -110,12 +110,12 @@ function selectOperation() {
             n2 = getRandomInt(2, 10);
             break;
         case 5:
-            strOp = "+";
+            op = strOp = "+";
             n1 = getRandomInt(10, 100000);
             n2 = getRandomInt(2, 100000);
             break;
         case 6:
-            strOp = "-";
+            op = strOp = "-";
             n1 = getRandomInt(10, 1000);
             n2 = getRandomInt(2, 1000);
             break;
@@ -190,7 +190,7 @@ function mathSelection() {
         if (radioButton.checked) if (radioButton.value === 'math-4') return 4;
         if (radioButton.checked) if (radioButton.value === 'math-5') return 5;
         if (radioButton.checked) if (radioButton.value === 'math-6') return 6;
-        if (radioButton.checked) if (radioButton.value === 'math-0') return 7;
+        if (radioButton.checked) if (radioButton.value === 'math-7') return 7;
     }
 }
 

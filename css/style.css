@@ -349,9 +349,36 @@ section {
 .radio-block {
   padding-left: 10px;
 }
+.radio-block:hover {
+  cursor: pointer;
+}
+
+input[type=text] {
+  background-color: #eef3f7;
+  border: none;
+  margin-left: 1em;
+  width: 5em;
+  height: 2em;
+  transition: 0.5s;
+  outline: none;
+}
+input[type=text]:focus {
+  border-bottom: 1px solid #c42c38;
+}
+
+button {
+  margin-left: 1em;
+  width: 5em;
+  height: 2em;
+  border: 1px solid #b0b8bf;
+}
+button:hover {
+  background-color: #c6cfd7;
+  border-bottom: 1px solid #c42c38;
+}
 
 .wrong-result {
-  color: red;
+  color: #c42c38;
 }
 
 input[type=radio] {
