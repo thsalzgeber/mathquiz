@@ -154,9 +154,9 @@ function getRandomInt(min, max) {
 }
 
 function verifyUserInput() {
-    mathCalculation = new MathCalc(n1, n2, $inputResult.val(), mathChoice);
 
     checkInput($inputResult.val());
+    mathCalculation = new MathCalc(n1, n2, $inputResult.val(), mathChoice);
 
     const resultOk = mathCalculation.mathOperation().resultBoolean;
     if (resultOk) {

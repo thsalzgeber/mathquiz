@@ -54,11 +54,12 @@ function calcDivisionRemainer(n1, n2, input) {
 }
 
 function calcDivisionRounded(n1, n2, input) {
-    const calc = roundNumber((n1 / n2), 2);
+    // const calc = roundNumber((n1 / n2), 2).toFixed(2);
+    const calc = (n1 / n2).toFixed(2);
     return {
         result: calc,
         resultText: `${n1} / ${n2} = ${calc}`,
-        resultBoolean: +input === calc ? true : false,
+        resultBoolean: input === calc ? true : false,
     }
 }
 
