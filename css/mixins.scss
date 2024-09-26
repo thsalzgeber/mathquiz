@@ -1,8 +1,0 @@
-@mixin game-result-popup($background-color, $game-graphic) {
-    background-color: $background-color;
-    border-radius: 20px;
-
-    &:after {
-        content: $game-graphic;
-    }
-}

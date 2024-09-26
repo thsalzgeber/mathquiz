@@ -4,12 +4,12 @@
 <head>
     <meta charset="utf-8">
     <title>Thomas Salzgeber - Math Quiz</title>
-    <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../icons/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css" media="all">
+    <link rel="stylesheet" href="../css/style.css" media="all">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" defer></script>
-    <script src="scripts/content.js" defer></script>
+    <script src="../scripts/content.js" defer></script>
     <script src="scripts/player.js" defer></script>
     <script src="scripts/mathcalc.js" defer></script>
     <script src="scripts/script.js" defer></script>
@@ -17,16 +17,17 @@
 
 <body>
     <div id="wrapper">
-        <header id="top">
+        <header id="top" class="center-content">
             <!-- Site Logo -->
             <a href="../index.html">
                 <picture class="logo-image">
-                    <source srcset="images/logo/logo-128x128.png" width="128" height="128" media="(min-width: 801px)">
-                    <source srcset="images/logo/logo-64x64.png" width="64" height="64"
+                    <source srcset="../images/logo/logo-128x128.png" width="128" height="128"
+                        media="(min-width: 801px)">
+                    <source srcset="../images/logo/logo-64x64.png" width="64" height="64"
                         media="(min-width: 400px) AND (max-width:800px)">
-                    <source srcset="images/logo/logo-32x32.png" width="32" height="32"
+                    <source srcset="../images/logo/logo-32x32.png" width="32" height="32"
                         media="(min-width: 0px) AND (max-width:399px)">
-                    <img src="images/logo/logo-128x128.png" alt="Logo Thomas Salzgeber" width="128" height="128">
+                    <img src="../images/logo/logo-128x128.png" alt="Logo Thomas Salzgeber" width="128" height="128">
                 </picture>
             </a>
 
@@ -34,7 +35,7 @@
 
         </header>
         <!-- Navigation -->
-        <nav>
+        <nav id="navigation" class="center-content">
             <ul>
                 <li><a class="home-image" href="../index.html"> Home</a></li>
                 <li>
@@ -64,7 +65,7 @@
             </ul>
         </nav>
 
-        <main class="link-content">
+        <main class="link-content center-content">
 
             <noscript>
                 <strong>Please enable JavaScript to get the full web content. Some elements are not visible if
@@ -107,7 +108,7 @@
                     <p id="quiznumber"></p>
                     <p><span id="mathoperation"></span>
                         <input type="text" id="input-result" name="input-result">
-                        <button type="button" id="ok-btn">OK</button>
+                        <button class="mathbutton" type="button" id="ok-btn">OK</button>
 
                         <i id="toggleToolTip" class="tooltip"></i>
                         <span class="popup">
@@ -143,21 +144,22 @@
         </main>
 
         <!-- Footer info -->
-        <div id="footer-info">
-            <div id="footer-box-1">
-
+        <div id="footer-top-content" class="center-content">
+            <div id="footer-top-content-1">
                 <h4>Impressum</h4>
                 <span id="impressum-date">impressum date</span><br>
                 <span id="impressum-name">impressum name</span>
             </div>
 
-            <div id="footer-box-2">
+            <div id="footer-top-content-2">
                 <h4>Contact</h4>
-                <span class="email-symbol contact-email-address"></span>
+                <span class="email-symbol contact-email-address"></span><br>
+                <span class="contact-linkedin"> </span>
             </div>
+
         </div>
 
-        <footer id="footer-content">
+        <footer id="footer-content" class="center-content">
             <div id="footer-1">
                 <p>
                     <a class="footer-top" href="#top"> [ Top ]</a>
@@ -166,7 +168,7 @@
 
             <div id="footer-2">
                 <p>
-                    <a class="footer-sitemap" href="sitemap.html"> Sitemap</a>
+                    <a class="footer-sitemap" href="../sitemap.html"> Sitemap</a>
                 </p>
             </div>
 
